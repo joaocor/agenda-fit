@@ -6,11 +6,18 @@ function cadastrarAluno() {
   const email = document.getElementById('email').value;
 
   fetch(API, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ nome, telefone, email })
-  })
-  .then(() => listarAlunos());
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ nome, telefone, email })
+})
+.then(async res => {
+  if (!res.ok) {
+    const erro = await res.json();
+    alert(erro.erro);
+    return;
+  }
+  listarAlunos();
+});
 }
 
 function listarAlunos() {
