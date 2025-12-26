@@ -6,11 +6,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const authRoutes = require('./routes/auth')(db);
-app.use(alunosRoutes);
-
 // Banco de dados SQLite
-const db = new sqlite3.Database('./backend/database.db');
+const db = new sqlite3.Database('./database.db');
 
 // Criação da tabela
 db.run(`
@@ -30,6 +27,11 @@ db.run(`
   )
 `);
 
+const authRoutes = require('./routes/auth')(db);
+const alunosRoutes = require('./routes/alunos')(db);
+
+app.use(authRoutes);
+app.use(alunosRoutes);
 
 app.post('/alunos', (req, res) => {
     const { nome, telefone, email } = req.body;
