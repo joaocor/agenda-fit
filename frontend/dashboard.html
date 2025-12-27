@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard | AgendaFit</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <h2>AgendaFit</h2>
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="alunos.html">Alunos</a>
+      <a href="agenda.html">Agenda</a>
+      <a href="#" onclick="logout()">Sair</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <h1>Dashboard</h1>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Total de Alunos</h3>
+        <span id="total-alunos">0</span>
+      </div>
+
+      <div class="card">
+        <h3>Aulas Hoje</h3>
+        <span>3</span>
+      </div>
+    </div>
+  </main>
+
+</div>
+
+<script src="js/dashboard.js"></script>
+</body>
+</html>
