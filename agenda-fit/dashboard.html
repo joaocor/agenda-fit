@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <title>Dashboard</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
   <nav>
     <a href="dashboard.html">Dashboard</a>
     <a href="alunos.html">Alunos</a>
     <a href="agenda.html">Agenda</a>
-    <a href="index.html">Sair</a>
+    <a href="#" onclick="logout()">Sair</a>
   </nav>
 
   <div class="content">
@@ -22,5 +22,7 @@
       <div class="card">Treinos Hoje: 5</div>
     </div>
   </div>
+  <script src="../js/auth-guard.js"></script>
+  <script>verificarAutenticacao();</script>
 </body>
 </html>

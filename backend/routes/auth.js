@@ -6,6 +6,26 @@ const SECRET = 'agendaFitSecret';
 
 module.exports = (db) => {
 
+  // Registro
+  router.post('/registro', (req, res) => {
+    const { email, senha } = req.body;
+
+    if (!email || !senha) {
+      return res.status(400).json({ erro: 'E-mail e senha são obrigatórios' });
+    }
+
+    db.run(
+      'INSERT INTO usuarios (email, senha) VALUES (?, ?)',
+      [email, senha],
+      function (err) {
+        if (err) {
+          return res.status(409).json({ erro: 'E-mail já cadastrado' });
+        }
+        res.status(201).json({ mensagem: 'Usuário criado com sucesso' });
+      }
+    );
+  });
+
   // Login
   router.post('/login', (req, res) => {
     const { email, senha } = req.body;
@@ -21,7 +41,7 @@ module.exports = (db) => {
         const token = jwt.sign(
           { id: usuario.id, email: usuario.email },
           SECRET,
-          { expiresIn: '1h' }
+          { expiresIn: '24h' }
         );
 
         res.json({ token });
