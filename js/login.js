@@ -18,7 +18,7 @@ function fazerLogin() {
   .then(data => {
     if (data.token) {
       localStorage.setItem('token', data.token);
-      window.location.href = 'dashboard.html';
+      window.location.href = '/dashboard.html';
     } else {
       alert(data.erro || 'Erro ao fazer login');
     }
